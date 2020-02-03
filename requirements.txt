@@ -12,4 +12,6 @@ seaborn
 opencv-python
 scikit-image
 wordcloud
-
+datasketch
+spacy
+gensim
