@@ -139,3 +139,5 @@ dmypy.json
 
 # Trained models
 /models/
+/_tmp*
+/_tmp/
