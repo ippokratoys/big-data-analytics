@@ -15,3 +15,8 @@ wordcloud
 datasketch
 spacy
 gensim
+nltk
+fuzzywuzzy
+pyemd
+python-Levenshtein
+xgboost
