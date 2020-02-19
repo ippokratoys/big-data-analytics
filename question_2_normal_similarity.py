@@ -41,7 +41,6 @@ for new_vector in vectorizer.transform(test_data['Content']):
     # res = num_of_similars(train_vectors, new_vector, jacardi_similarity)
     if (res > 0):
         count += 1
-    # Remove if your computer can handle it
-    break
+
 timing.log_finish()
 print("Found count {} similar".format(count))
