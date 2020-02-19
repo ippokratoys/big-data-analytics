@@ -13,6 +13,8 @@ def read_data_and_create_vectorizer():
     train_data = train_data[:data_to_use]
 
     test_data = pd.read_csv('datasets/q2a/corpusTest.csv')
+    test_data_to_use = int(len(test_data) * PERCENTAGE_OF_DATA / 100)
+    test_data = test_data[:test_data_to_use]
 
     print("Running for {} train data({}%)".format(
         len(train_data),
