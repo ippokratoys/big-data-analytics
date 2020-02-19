@@ -20,3 +20,4 @@ fuzzywuzzy
 pyemd
 python-Levenshtein
 xgboost
+NearPy
