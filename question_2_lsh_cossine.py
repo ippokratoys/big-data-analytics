@@ -15,7 +15,7 @@ def run_lsh(num_of_perm, train_vectors, test_data, vectorizer):
         dim,
         lshashes=[RandomBinaryProjections(str(i), i, rand_seed=4242)],
         distance=CosineDistance(),
-        vector_filters=[DistanceThresholdFilter(0.8)]
+        vector_filters=[DistanceThresholdFilter(0.2)]
     )
     for idx, vector in enumerate(train_vectors):
         engine.store_vector(vector.reshape(dim, 1), str(idx))
@@ -44,7 +44,7 @@ train_vectors, test_data, vectorizer = read_data_and_create_vectorizer()
 
 # run for different values of K
 metrics = []
-for i in [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
+for i in [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]:
     metrics.append(run_lsh(i, train_vectors, test_data, vectorizer))
 
 print(metrics)
