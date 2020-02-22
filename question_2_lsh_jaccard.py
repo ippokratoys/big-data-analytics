@@ -7,15 +7,14 @@ from question_2_a_utils import read_data_and_create_vectorizer
 
 def create_hash_from_vector(vector_to_be_hashed: lil_matrix, num_of_perm):
     hashed_vector: MinHash = MinHash(num_perm=num_of_perm)
-    for vector_element in vector_to_be_hashed.todense():
-        hashed_vector.update(vector_element)
+    hashed_vector.update(vector_to_be_hashed.toarray()[0])
     return hashed_vector
 
 
 def run_lsh(num_of_perm, train_vectors, test_data, vectorizer):
     print("----------------{}-------------------".format(num_of_perm))
     timing.log_start("Building lsh...")
-    lsh = MinHashLSH(threshold=0, num_perm=num_of_perm)
+    lsh = MinHashLSH(threshold=0.8, num_perm=num_of_perm)
     for idx, vector in enumerate(train_vectors):
         hashed_vector: MinHash = create_hash_from_vector(vector, num_of_perm)
         lsh.insert(str(idx), hashed_vector)

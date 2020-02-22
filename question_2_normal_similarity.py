@@ -5,17 +5,14 @@ from question_2_a_utils import read_data_and_create_vectorizer
 
 
 # couldn't find something ready, so instead I did a quick hack.
-def jacardi_similarity(x, y):
+def jaccardi_similarity(x, y):
     return cosine_similarity(1 * (x > 0), 1 * (y > 0))
 
 
 def num_of_similars(existing_vectors, new_vector, similarity_fun):
     num_of_similars = 0
-    for existing in existing_vectors:
-        similarity = similarity_fun(existing, new_vector)
-        if (similarity >= 0.8):
-            num_of_similars += 1
-    return num_of_similars
+    similarities = similarity_fun(new_vector, existing_vectors)
+    return len(similarities[similarities  > 0.8])
 
 
 def num_of_similars_jac(existing_vectors, new_vector):
@@ -37,8 +34,8 @@ timing.log_start("Start comparing...")
 count = 0
 for new_vector in vectorizer.transform(test_data['Content']):
     # Switch beetwen the following lines to run different similarities algorithms
-    res = num_of_similars(train_vectors, new_vector, cosine_similarity)
-    # res = num_of_similars(train_vectors, new_vector, jacardi_similarity)
+    # res = num_of_similars(train_vectors, new_vector, cosine_similarity)
+    res = num_of_similars(train_vectors, new_vector, jaccardi_similarity)
     if (res > 0):
         count += 1
 
