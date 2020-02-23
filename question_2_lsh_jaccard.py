@@ -7,7 +7,8 @@ from question_2_a_utils import read_data_and_create_vectorizer
 
 def create_hash_from_vector(vector_to_be_hashed: lil_matrix, num_of_perm):
     hashed_vector: MinHash = MinHash(num_perm=num_of_perm)
-    hashed_vector.update(vector_to_be_hashed.toarray()[0])
+    for elem in vector_to_be_hashed.indices:
+        hashed_vector.update(elem)
     return hashed_vector
 
 
