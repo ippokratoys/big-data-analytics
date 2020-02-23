@@ -21,7 +21,11 @@ def estimate(bst, x_test, y_test):
     prediction = bst.predict(x_matrix)
     pred_norm = [int(x > 0.5) for x in prediction]
     report = classification_report(y_test, pred_norm)
+    metrics = question2b_utils.get_metrics(y_test, pred_norm)
+    print("###### R E P O R T ######")
     print(report)
+    print("###### M E T R I C S ######")
+    print(metrics)
     return report
 
 
